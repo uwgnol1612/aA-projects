@@ -9,7 +9,7 @@ class Pawn < Piece
     def moves
         moves = []
         i, j = self.pos 
-        possible_steps.each do |step|
+        forward_steps.each do |step|
             i += step[0] * forward_dir 
             moves << [i,j]
         end

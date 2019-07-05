@@ -3,12 +3,8 @@ require_relative 'pieces'
 class Board 
     attr_reader :rows
 
-    def initialize 
-        @rows = Array.new(8) {Array.new(8, NullPiece.instance)}
-        [:white, :black].each do |color|
-            fill_first_row(color)
-            fill_pawns(color)
-        end  
+    def initialize(fill_empty = false)
+        fill_the_board(fill_empty) 
     end 
 
     
@@ -45,6 +41,7 @@ class Board
         in_check?(color) && @rows.flatten.none? {|el| el.color == color && el.valid_moves.empty?}
     end 
 
+
     def in_check?(color)
         king_pos = find_king(color)
         rival_color = color == :black ? :white : :black
@@ -68,15 +65,24 @@ class Board
 
     end 
 
-    def board_dup 
-        @rows.deep_dup
+    def dup
+        new_board = Board.new(true)
+        @rows.flatten.each do |piece|
+            Piece.new(piece.color, new_board, piece.pos)
+        end 
+        new_board
+    end
+    
+
+    def fill_the_board(fill_empty)
+        @rows = Array.new(8) {Array.new(8, NullPiece.instance)}
+        return if fill_empty   
+        [:white, :black].each do |color|
+            fill_first_row(color)
+            fill_pawns(color)
+        end 
     end 
 
-    def pieces
-    end 
-
-    def move_piece!(color, start_pos, end_pos)
-    end 
 
     private 
 
@@ -99,16 +105,6 @@ class Board
 
 end 
 
-class Array
-    def deep_dup
-        self.map do |el|
-            if el.is_a? Array
-                el.deep_dup
-            else
-                el
-            end
-        end
-    end
-end
+
 
 
