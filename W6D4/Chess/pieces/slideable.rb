@@ -30,12 +30,19 @@ module Slideable
         i, j = self.pos
         moves = []
 
-        while self.board.valid_pos?([i,j])
+        loop do 
             i += dx
-            j += dy
-            if self.board.valid_pos?([i,j]) && self.board[[i,j]].color != self.color
-                moves << [i,j]
-            end 
+            j += dy  
+            new_pos = [i, j]
+
+            break unless self.board.valid_pos?(new_pos)
+                 
+            if self.board.empty?(new_pos)
+                moves << new_pos
+            else  
+                moves << new_pos if color != self.board[new_pos].color
+                break
+            end  
         end
         moves
     end 

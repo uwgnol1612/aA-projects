@@ -8,6 +8,8 @@ class Piece
         @color = color 
         @board = board
         @pos = pos 
+
+        @board.add_piece(pos, self)
     end 
 
     def to_s
@@ -15,10 +17,11 @@ class Piece
     end 
 
     def empty?
+        false 
     end 
 
     def valid_moves
-        moves.reject { |move| move_into_check?(move)}
+        moves.reject {|pos| move_into_check?(pos)}
     end 
 
     def pos=(val)
@@ -29,11 +32,9 @@ class Piece
         raise "The symbol is not assigned!"
     end 
 
-    private
-
     def move_into_check?(end_pos)
         dup_board = @board.dup
-        dup_board.move_piece(color,pos,end_pos)
+        dup_board.move_piece!(pos, end_pos)
         dup_board.in_check?(color)
     end 
 end 

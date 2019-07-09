@@ -2,18 +2,8 @@ require_relative "piece"
 
 class Pawn < Piece 
 
-    def move_dirs
-        [forward_dir,0]
-    end 
-
     def moves
-        moves = []
-        i, j = self.pos 
-        forward_steps.each do |step|
-            i += step[0] * forward_dir 
-            moves << [i,j]
-        end
-        moves
+        forward_steps + side_attacks
     end
 
     def symbol
@@ -25,25 +15,31 @@ class Pawn < Piece
     end 
 
     def forward_dir #should return 1 or -1
-        if self.color == :black 
-            return 1
-        else
-            return -1
-        end
+        self.color == :black ? 1 : -1
     end 
 
     def forward_steps
-        possible_steps = [[1,0], [2,0]] if at_start_row?
-        possible_steps = [[1,0]]
+        i, j = pos
+        one_step = [i + forward_dir, j]
+        return [] unless board.valid_pos?(one_step) && board.empty?(one_step)
+
+        steps = [one_step]
+        two_step = [i + 2 * forward_dir, j]
+        steps << two_step if at_start_row? && board.empty?(two_step)
+        steps
     end 
 
     def side_attacks
         i, j = self.pos
-        if self.color == :white
-            [[i-1, j-1], [i-1, j+1]]
-        else
-            [[i+1, j-1], [i+1, j+1]]
-        end
+        side_moves = [[i + forward_dir, j - 1], [i + forward_dir, j + 1]]
+
+        side_moves.select do |new_pos|
+            next if !self.board.valid_pos?(new_pos)
+            next if self.board[new_pos].empty?
+
+            other_piece = self.board[new_pos]
+            other_piece && self.color != other_piece.color 
+        end 
     end 
 
 end

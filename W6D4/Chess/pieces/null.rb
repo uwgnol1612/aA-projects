@@ -15,5 +15,9 @@ class NullPiece < Piece
 
     def symbol
         " "
+    end
+    
+    def empty?
+        true 
     end 
 end 
