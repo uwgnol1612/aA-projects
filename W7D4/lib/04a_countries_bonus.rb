@@ -18,14 +18,7 @@ def highest_gdp
   # name only. Some countries may have NULL gdp values)
   execute(<<-SQL)
   SELECT
-    name
-  FROM
-    countries
-  WHERE
-    continent = 'Europe'
-  ORDER BY
-    GDP DESC
-    
+
   SQL
 end
 
