@@ -71,7 +71,7 @@ def connecting_routes
   GROUP BY
     company, num
   HAVING 
-    COUNT(*) >= 2
+    COUNT(*) = 2
   SQL
 end
 
@@ -126,18 +126,17 @@ def haymarket_and_leith
   # Give the company and num of the services that connect stops
   # 115 and 137 ('Haymarket' and 'Leith')
   execute(<<-SQL)
-  SELECT
-    company,
-    num
-  FROM 
-    routes
-  WHERE
-    stop_id = 115 OR stop_id = 137
-  GROUP BY
-    company, num
-  HAVING 
-    COUNT(*) >= 2
   
+  SELECT DISTINCT
+    a.company,
+    a.num
+  FROM
+    routes a 
+  JOIN
+    routes b ON a.company = b.company AND a.num = b.num
+  WHERE
+    a.stop_id = 115 AND b.stop_id = 137
+
   SQL
 end
 

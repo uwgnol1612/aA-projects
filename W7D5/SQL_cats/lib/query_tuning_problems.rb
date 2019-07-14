@@ -50,7 +50,7 @@ def cats_and_toys_alike
   # Find all the cat names where the cat and the toy they own are both the color 'Blue'.
 
   # Order alphabetically by cat name
-  # Get your overall cost lower than: 590 => CREATE INDEX cat_color ON cats(color)
+  # Get your overall cost lower than: 590 => CREATE INDEX cat_color ON cats(color), CREATE INDEX toy_color ON toys(color) 
   execute(<<-SQL)
   SELECT DISTINCT
     cats.name
@@ -71,7 +71,7 @@ end
 def toyless_blue_cats
   # Use a type of JOIN that will list the names of all the cats that are 'Navy Blue' and have no toys. 
 
-  # Get your overall cost lower than: 95 => CREATE INDEX cat_id ON cattoys(cat_id)
+  # Get your overall cost lower than: 95 => CREATE INDEX cattoy_toy_id ON cattoys(toy_id), CREATE INDEX cattoy_cat_id ON cattoys(cat_id)
   execute(<<-SQL)
   SELECT
     cats.name
@@ -115,7 +115,7 @@ def cats_like_johnson
 
   # Order alphabetically by cat name
 
-  # Get your overall cost lower than: 100 => CREATE INDEX cat_name ON cats(name)
+  # Get your overall cost lower than: 100 => 
   execute(<<-SQL)
   SELECT
     cats.name
@@ -141,7 +141,9 @@ def cheap_toys_and_their_cats
   # Find the cheapest toy. Then list the name of all the cats that own that toy.
 
   # Order alphabetically by cats name
-  # Get your overall cost lower than: 230 => CREATE INDEX toy_price ON toys(price)
+  # Get your overall cost lower than: 230 => 
+
+  # CREATE INDEX cattoy_toy_id ON cattoys(toy_id), CREATE INDEX cattoy_cat_id ON cattoys(cat_id)
   execute(<<-SQL)
   SELECT
     cats.name 
@@ -174,12 +176,17 @@ def cats_with_a_lot
     cats.name
   FROM  
     cats
-  JOIN  
-    cattoys ON cats.id = cattoys.cat_id
-    GROUP BY
-    cats.id
-  HAVING
-    COUNT(cattoys.toy_id) > 7
+  WHERE  
+    cats.id IN (
+      SELECT 
+        cattoys.cat_id
+      FROM
+        cattoys
+      GROUP BY
+        cattoys.cat_id
+      HAVING
+        COUNT(cattoys.toy_id) > 7
+        )
   ORDER BY
     cats.name
 
