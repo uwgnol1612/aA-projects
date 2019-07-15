@@ -14,7 +14,7 @@ class LRUCache
   end
 
   def get(key)
-        node = @map[key]
+      node = @map[key]
       if node.nil?
         calc!(key)
       else  
