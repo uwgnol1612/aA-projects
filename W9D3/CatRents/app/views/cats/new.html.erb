@@ -1,0 +1,35 @@
+
+<form action="<%= cats_url %>" method="POST">
+
+    <label for="name">Name</label>
+    <input id="name" type="text" name="cat[name]">
+
+    <div>
+    <input type="radio" id="M" name = "cat[sex]" value="M" >
+    <label for="M">Male</label>
+    
+    <input type="radio" id="F" name = "cat[sex]" value="F">
+    <label for="F">Female</label>
+    </div>
+
+    </select> 
+
+    <label for="color">Color</label> 
+        <select id="color" name="cat[color]"> 
+        <option disabled selected>-- Select a color --</option> 
+        <option value="<%= Cat::COLOR.first %>"><%= Cat::COLOR.first %></option>  
+        <option value="<%= Cat::COLOR.second %>"><%= Cat::COLOR.second %></option>
+        <option value="<%= Cat::COLOR.last %>"><%= Cat::COLOR.last %></option>
+    </select>
+
+    <label for="birth_date">Birth_date</label>
+        <input type="date" id="birth_date" name="cat[birth_date]" >
+
+    <label for="description">Description</label>
+      <textarea name="cat[description]">
+    </textarea>
+    
+
+    <input type="submit" value='Add the cat!'>
+
+</form>
