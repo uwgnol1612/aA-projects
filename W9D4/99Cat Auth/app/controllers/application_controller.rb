@@ -10,5 +10,6 @@ class ApplicationController < ActionController::Base
     def logged_in?
         current_user != nil # => true
     end
+
 end
 

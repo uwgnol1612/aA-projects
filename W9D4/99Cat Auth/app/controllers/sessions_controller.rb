@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
             params[:user][:user_name],
             params[:user][:password]
         )
-        # debugger
+
         if user
            
             session[:session_token] = user.session_token 

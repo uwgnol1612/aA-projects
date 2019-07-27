@@ -1,0 +1,16 @@
+<h3>Band Name: <%= @band.name %></h3>
+
+<form action ="<%= edit_band_url(@band)%>" method = "get">
+<input type="submit" value = "Edit the band!">
+</form>
+
+<br>
+<form action ="<%= band_url(@band)%>" method = "post">
+<input type="hidden" name ="_method" value ="delete">
+<input type="submit" value = "Delete the band!">
+</form>
+
+<br>
+
+<a href="<%= bands_url %>">Go back</a>
+
