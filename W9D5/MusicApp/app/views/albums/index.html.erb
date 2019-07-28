@@ -1,0 +1,10 @@
+<h3>All the albums! </h3>
+
+<% @albums.each do |album| %>
+    Title: <%= album.title %>
+    <br>
+    Year: <%= album.year %>
+    <br>
+    <a href="<%= album_url(album) %>">See details</a>
+    <br><br>
+<% end %>

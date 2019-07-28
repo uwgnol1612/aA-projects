@@ -1,4 +1,6 @@
 class BandsController < ApplicationController
+    before_action :require_login
+
     def index
         @bands = Band.all
         render :index
@@ -49,7 +51,7 @@ class BandsController < ApplicationController
         @band = Band.find(params[:id])
         @band.destroy
         flash[:success] = "Band was deleted!"
-        redirect_to bands_url
+        redirect_to band_albums_url
     end 
 
 

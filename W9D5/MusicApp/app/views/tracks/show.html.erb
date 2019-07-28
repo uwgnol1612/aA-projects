@@ -1,0 +1,35 @@
+<h4>
+
+Title: <%= @track.title %>
+<br>
+Ord: <%= @track.ord %>
+<br>
+Album: <%= @track.album.title %>
+<br>
+</h4>
+
+<% if @track.lyrics.nil?  %>
+<h4>Lyrics not found</h4>
+<% else %>
+<p>
+Lyrics: <%= ugly_lyrics(@track.lyrics) %>
+</p>
+<% end %>
+
+
+<a href="<%= album_tracks_url(@track.album_id) %>">Other tracks from this album</a>
+<br><br>
+
+<form action="<%= edit_track_url %>" method = "get">
+<input type="submit" value= "Edit this track">
+</form>
+<br>
+
+<form action="<%= track_url(@track) %>" method= "post">
+<input type="hidden" name= "_method" value= "delete">
+<input type="submit" value= "Delete this track">
+</form>
+
+<%= render 'notes/note'%>
+
+<%= render 'notes/form'%>

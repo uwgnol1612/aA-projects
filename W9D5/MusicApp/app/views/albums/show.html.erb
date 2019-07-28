@@ -1,0 +1,34 @@
+
+<h4>
+Title: <%= @album.title %>
+<br><br>
+Year: <%= @album.year %>
+<br><br>
+Band: <%= @album.band.name %>
+<br><br>
+</h4>
+
+
+<a href="<%= band_albums_url(@album.band_id) %>">Click to check all the albums from this band!</a>
+
+<br><br>
+
+<form action="<%= edit_album_url %>" method = "get">
+<input type="submit" value= "Edit this album">
+</form>
+<br>
+<form action="<%= album_url(@album) %>" method= "post">
+<input type="hidden" name= "_method" value= "delete">
+<input type="submit" value= "Delete this album">
+
+<h4>List of tracks from this album</h4>
+<% @album.tracks.each do |track| %>
+<li><a href="<%=track_url(track)%>"><%= track.title %></a></li>
+<br>
+<% end %>
+
+<a href="<%= new_album_track_url(@album) %>">Add tracks to the album</a>
+
+</form>
+
+

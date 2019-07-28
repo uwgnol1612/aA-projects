@@ -1,0 +1,15 @@
+<% if @track.notes.nil? %>
+    <h4>Leave a comment!</h4>
+<% else %>
+    <% @track.notes.each do |note| %>
+    <h4><%= note.user.email %></h4>
+    <p><%= note.body %></p>
+        <% if current_user.id == note.user.id %>
+        <form action="<%= note_url(note) %>" method= "post">
+        <input type="hidden" name= "_method" value= "delete">
+        <input type="submit" value= "Delete the note!">
+        </form>
+        <br>
+        <% end  %>   
+    <% end %>
+<% end %>

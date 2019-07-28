@@ -1,0 +1,15 @@
+
+<% if @tracks.nil? %>
+    <h3>There are no tracks to display!</h3>
+<% else %>
+    <h4>List of tracks from the album: </h4>
+    <% @tracks.each do |track|%>
+   <li>
+    <a href="<%= track_url(track) %>"><%= track.title %></a>
+    </li>
+    <br>
+    <% end %>
+
+<% end %>
+
+<a href="<%= albums_url %>">Go Back</a>
