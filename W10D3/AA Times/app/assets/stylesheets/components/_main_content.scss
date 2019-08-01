@@ -1,0 +1,68 @@
+header {
+    font-weight: bold;
+}
+
+
+
+section {
+    margin-top: 15px;
+    padding: 5px;
+    font-family: serif;
+    // text-align: left;
+}
+
+section p, li {
+    font-size: 13px;
+}
+
+.thumbnail {
+    height: 100px;
+    object-fit: cover;
+}
+
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+}
+
+.header-link:hover{
+	text-decoration: underline;
+}
+
+
+.center{
+    text-align: center;
+}
+
+.left{
+    text-align: left;
+}
+
+.comment {
+    text-decoration: underline;
+    color:blue;
+}
+
+input[type="text"] {
+    // -webkit-appearance: button;
+    // -moz-appearance: button;
+    // appearance: button;
+    border: 1px solid lightgray;
+    width:60%;
+    margin:0;
+    padding: 10px 0; 
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+#my-button {
+    border: 1px solid lightgray;
+    background: lightblue;
+    right:0px;
+    margin:0;
+    padding:10px 0;
+    text-align: center;
+    border-radius: 5px;
+}
