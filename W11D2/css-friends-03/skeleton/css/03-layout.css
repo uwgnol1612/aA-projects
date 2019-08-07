@@ -1,0 +1,58 @@
+/* PHASE 3: Layout */
+
+.content {
+    display: flex;
+    /* border: 1px solid gray; */
+    border-top: none;
+    margin: auto;
+    min-height: 200px;
+    width: 900px;
+ 
+    background-color: white;
+}
+
+.content-sidebar {
+    width: 33.333%;
+    min-height: 200px;
+    border: 1px solid gray;
+    border-right: none;
+    border-top: none;
+    padding: 10px;
+}
+
+.content-main {
+    width: 66.666%;
+    min-height: 200px;
+    border: 1px solid gray;
+    border-top: none;
+    padding: 10px;
+}
+.footer {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    width: 880px;
+    background-color: white;
+    margin: auto;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid gray;
+    border-top: none;
+    color: gray;
+
+}
+
+.copyright {
+    font-size: 16px;
+    padding-left: 5px;
+    justify-content: space-evenly;
+}
+
+.footer-links {
+    display: flex;
+    
+}
+
+.footer-links li{
+    margin: 5px;
+}
