@@ -61,6 +61,8 @@ Game.prototype.playTurn = function (callback) {
   }
 };
 
+debugger
+
 
 /**
  * Continues game play, switching turns, until the game is over.
