@@ -5,8 +5,9 @@ export default class FlappyBird {
   constructor(canvas) {
     this.ctx = canvas.getContext("2d");
     this.dimensions = { width: canvas.width, height: canvas.height };
-    this.workPlease();
     this.restart();
+    this.play();
+
   }
   
   restart() {
@@ -14,6 +15,7 @@ export default class FlappyBird {
     this.bird = new Bird(this.dimensions);
     this.running = false;
     this.animate();
+
   }
 
   animate() {
@@ -21,7 +23,7 @@ export default class FlappyBird {
     this.bird.animate(this.ctx);
 
     if (this.running){
-      requestAnimationFrame(this.animate.bind(this));
+      window.requestAnimationFrame(this.animate.bind(this));
     }
   }
 
@@ -39,8 +41,8 @@ export default class FlappyBird {
     }
   }
  
-  workPlease() {
-    this.ctx.canvas.addEventListener("mousedown", this.click.bind(this));
+  eventHandler() {
+    canvas.addEventListener("mousedown", this.click.bind(this));
   }
 
 }

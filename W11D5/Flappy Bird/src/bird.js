@@ -5,14 +5,13 @@ const CONSTANTS = {
     BIRD_WIDTH:  40,
     BIRD_HEIGHT:  30
   };
+
 export default class Bird {
     constructor(dimensions) {
         this.dimentions = dimensions;
         this.velocity = 0;
         this.positionX = dimensions.width / 3;
-        this.positionY = dimensions.height / 2;
-
-      
+        this.positionY = dimensions.height / 2; 
    }
 
    drawBird(ctx) {
@@ -26,8 +25,9 @@ export default class Bird {
    }
 
    move() {
-    this.positionY += this.velocity;
     this.velocity += CONSTANTS.GRAVITY;
+    this.positionY += this.velocity;
+    
    }
 
    flap() {
