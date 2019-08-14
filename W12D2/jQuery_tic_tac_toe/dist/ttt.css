@@ -1,0 +1,39 @@
+.board {
+    margin: auto;
+    list-style: none;
+    display: flex;
+    width: 300px;
+    height: 297px;
+    flex-wrap: wrap;
+}
+
+.cell {
+    background-color: lightgray;
+    /* height: 100px; */
+    width: 97px;
+    height: 97px;
+    border: 1px solid grey;
+    /* flex-wrap: wrap; */
+}
+
+.cell:hover {
+    background-color: pink;
+}
+
+
+.marked {
+    font-size: 65px;
+    text-align: center;
+    color: white;
+    
+    background-color: lightskyblue;
+}
+
+body {
+    display: flex;
+    flex-direction: column
+}
+
+h1 {
+    align-self: center;
+}
