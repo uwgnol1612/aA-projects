@@ -1,0 +1,188 @@
+
+html {
+  box-sizing: border-box;
+  background: salmon;
+ 
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#party{
+  color: cornsilk;
+  font-family: 'helvetica neue';
+  font-size: 91px;
+  font-weight: 200;
+  padding: 20px;
+  display:inline-block;
+  width: 50%;
+  height: 140px;
+}
+h1 p{
+  font-size: 56px;
+  color: cornflowerblue;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.welcome {
+  font-weight: 400;
+}
+
+/*  Phase 4: Slide In & Out Classes */
+
+.align-left {
+  float: left;
+  margin-right: 20px;
+}
+
+.align-right {
+  float: right;
+  margin-left: 20px;
+}
+
+.slide {
+  opacity: 0;
+  transition: all .5s;
+}
+
+.align-left.slide {
+  transform: translateX(-30%) scale(0.95);
+}
+
+.align-right.slide {
+  transform: translateX(30%) scale(0.95);
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateX(0%) scale(1);
+}
+
+.dog-link {
+  display: none;
+}
+
+.dog-link-show {
+  display: block;
+}
+
+.clock-holder{
+  width: 100%;
+}
+
+#clock{
+  font-family: sans-serif;
+  text-align: left;
+  font-size: 35px;
+  padding: 20px;
+  padding-top: 0px;
+  width: 100%;
+  
+}
+
+.drop-down-dog-nav {
+  width: 45vw;
+  text-align: -webkit-right;
+  position: relative;
+}
+
+.drop-down-dog-nav h3 {
+  text-align: right;
+  margin: 30px;
+  font-family: sans-serif;
+  font-size: 35px;
+  width: fit-content;
+  margin-bottom: 0px;
+  color: white;
+}
+.drop-down-dog-nav ul {
+  text-align: left;
+  background: cornsilk;
+  width: fit-content;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 4px;
+  position: absolute;
+  left: 20vw;
+} 
+  
+.drop-down-dog-nav ul li{
+  border-bottom: 1px solid lightgrey;
+  font-family: sans-serif;
+  color: cornflowerblue;
+  margin: 10px;
+  padding-bottom: 5px;
+    
+}
+
+.drop-down-dog-nav ul li a{
+  
+  color: cornflowerblue;
+  text-decoration: initial;
+    
+}
+
+.todo-container {
+
+  display: flex;
+  font-family: sans-serif;
+  text-align: center;
+  width: 90%;
+  height: 30vw;
+  margin: auto;
+
+}
+
+.todo-container h2{
+  margin-left: 10px;
+  font-size: 91px;
+  text-align: left;
+  text-decoration: underline;
+  flex-wrap: wrap;
+  width: 15%;
+  margin-top: 20px;
+  margin-right: 0px;
+  color: cornsilk;
+  padding-left: 5vw;
+}
+
+.todo-container ul{
+  flex-wrap: wrap;
+  text-align: left;
+  padding: 5px;
+  height: 20vw;
+  width: 35%;
+  margin-left: 7vw;
+  margin-right: 0px;
+  margin-top: 3vw;
+}
+
+.add-todo-form input {
+  font-family: monospace;
+  width: auto;
+  display: flex;
+  margin:auto;
+  font-size: 35px;
+  margin-right: 3vw;
+  
+}
+.add-todo-form{
+  align-self: center;
+  width: 25%;
+}
+
+.todo-container ul li label{
+  font-size: 35px;
+}
+
+.break {
+  height: 10px;
+  background: cornflowerblue;
+  width: 100%;
+}
