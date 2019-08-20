@@ -1,0 +1,82 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+div {
+    display: block;
+}
+
+.clock {
+    font-family: sans-serif;
+    color: white;
+    margin: 0 20 20 20;
+    background: orange;
+    padding: 10px;
+    border: 2px solid black;
+    width: 550px;
+    height: 94px;
+    font-size: 25px;
+    background-position-y: 20%
+}
+.clock p {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 20px 10px 10px 0;
+}
+
+.tabs {
+    width: 240px;
+    height: 200px;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+.tab-header {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    height: 30px;
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+
+.tab-header > li.active {
+    border-bottom: none;
+}
+
+.active {
+    font-weight: bold;
+}
+
+.tab-header > li {
+    width: 65px;
+    border: 2px solid black;
+
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+    background: lightblue;
+}
+
+.tab-content {
+    color: white;
+    width: 200px;
+    height: 200px;
+    margin: 0;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: lightblue;
+
+}
