@@ -1,5 +1,6 @@
 import React from 'react'
 import { uniqueId } from '../../util/todo_util'
+import ErrorList from './error_list'
 
 class TodoForm extends React.Component {
     constructor(props) {
@@ -15,8 +16,8 @@ class TodoForm extends React.Component {
         e.preventDefault();
 
         const todo = Object.assign({}, this.state, { id: uniqueId() });
-        this.props.receiveTodo(todo);
-        this.setState({title: "", body: ""})
+        this.props.createTodo(todo).then(
+            () => this.setState({ title: "", body: "" }))
     }
 
     // updateBody(e) {
@@ -35,6 +36,8 @@ class TodoForm extends React.Component {
 
     render() {
         return <form className = "todo-form" onSubmit= {this.handleSubmit}>
+            <ErrorList errors={this.props.errors} />
+            
             <label htmlFor="todo-title">Title:</label>
             <input className = 'title'
             type="text"
