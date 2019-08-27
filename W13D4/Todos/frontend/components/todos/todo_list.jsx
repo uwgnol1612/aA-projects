@@ -16,6 +16,7 @@ class TodoList extends React.Component {
             <TodoListItem
                 key={todo.id}
                 todo={todo}
+                removeTodo = {this.props.removeTodo}
                 receiveTodo = {this.props.receiveTodo} />)
         );
 

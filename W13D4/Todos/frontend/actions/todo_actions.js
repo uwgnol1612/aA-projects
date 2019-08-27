@@ -1,7 +1,11 @@
 export const RECEIVE_TODOS = 'RECEIVE_TODOS';
 export const RECEIVE_TODO = 'RECEIVE_TODO';
+export const REMOVE_TODO = 'REMOVE_TODO'
+
 import * as APIUtil from '../util/todo_api_util';
 import { receiveErrors } from  './error_actions';
+
+
 
 export const receiveTodos = (todos) => ({
     type: RECEIVE_TODOS,
@@ -29,6 +33,12 @@ export const createTodo = (todo) => {
     }
 
 }
+
+export const removeTodo = (todo) => ({
+    type: REMOVE_TODO,
+    todo
+
+})
 
 
 // window.receiveTodos = receiveTodos;
