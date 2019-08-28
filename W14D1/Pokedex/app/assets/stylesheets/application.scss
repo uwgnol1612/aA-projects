@@ -115,6 +115,16 @@
    font-size: 16px;
  }
 
- .pokedex {
-   
+
+ .item-list {
+   display: flex;
+   flex-wrap: wrap;
+ }
+
+ .item-list li image {
+   width: 50%
+ }
+
+ .item-list > li {
+   margin: 10px;
  }

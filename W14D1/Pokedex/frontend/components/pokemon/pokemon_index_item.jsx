@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PokemonDetail from './pokemon_detail';
+
 
 class PokemonIndexItem extends React.Component {
     render() {
