@@ -1,0 +1,67 @@
+Pokemon Index Presentational component
+- pokemon variable
+- From props passed in by container
+- Connect passes state to msp, then pokemon is calculated from a selector that receives state as an argument
+  + Selector: Object.values(state.entities.pokemon) => A nice array of pokemon objects from state
+​
+Where does state come from?
+rootReducer gets passed in to createStore
+​
+How does the reducer set up state?
+  - combineReducers
+    + function
+    + object with keys representing slices of state
+    + values representing reducers
+    + reducer values are responsible for calculating the next state of the keys from the oldState
+    + ex: pokemon is calculated from pokemonReducer(oldPokemon, action)
+  - sometimes initial state
+​
+Pokemon Reducer
+- RECEIVE_ALL_POKEMON action types add all pokemon into state
+- receive an action with that type
+- designate that pokemon slice of state should change in response to that type
+  + how does redux know that something changed?
+  + the object is different (not the original state)
+  + we return a new state OR a copy of the oldState (if we plan to modify it)
+- return the new value of pokemon
+  + returning either Object.assign, newState (after making modifications), returning the action - case by case basis
+​
+Action
+  How does an action make it to the reducer?
+  - actions ALWAYS come from dispatch
+  - action gets created and passed to dispatch
+    - pokemon are coming from a .then callback
+    - created with an action creator
+    - passed to dispatch
+  
+  The .then callback (in promise) is invoked with the pokemon data, where does the pokemon data come from?
+    - comes from the jbuilder view
+    - comes from ApiPokemonController
+      + index action
+    - a rails route receives an HTTP request and triggers the controller action
+    - route gets hit by ajax request
+    - ajax request comes from our fetchAllPokemon API Util
+    - API util gets invoked by a function that gets invoked by the thunk middleware with dispatch
+​
+Thunk middleware?
+  - added into applyMiddleware when we create the store
+  - intercepts any actions passed to dispatch, checks if they're a function
+    + Function: invokes the action, passes dispatch
+    + Object: 
+      - a regular old fashioned action (object)
+      - so it's ready to go to the reducer (or next middleware)
+​
+How do we pass a function into dispatch? When does this actually happen?
+- Provide a prop to the index presentational component called fetchPokemon
+  + is a function
+  + invokes fetchAllPokemon
+    - returns the inner function that takes in dispatch
+  + passes that function into dispatch (which will hit the thunk and get invoked)
+- allows the container to trigger a fucntion (passed in as props) that will result in a state change
+- usually we do this in componentDidMount
+​
+- when function gets called
+  + state changes (fills with pokemon)
+  + component re-renders
+  + props passed to the component change (from mapStateToProps)
+  + we have pokemon to iterate through
