@@ -1,0 +1,14 @@
+version: "3.0"
+services:
+
+  redis:
+    image: redis:4.0.11-alpine
+
+  web:
+    build: .
+    image: composep:latest
+    environment:
+      - FLASK_ENV=development
+    ports:
+      - 5000:5000
+      
